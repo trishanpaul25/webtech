@@ -1,0 +1,27 @@
+<input type = "text" id="search" placeholder="search items...">
+<ul id="prodList"></ul>
+
+<script>
+  const inp = document.getElementById('search');
+  const list = document.getElementById('prodList');
+  prods = ['Apple','Samsung','Redmi','Oneplus'];
+
+  function renderList(query = ''){
+    query = query.trim().toLowerCase();
+    filtered = prods.filter(p => p.toLowerCase().includes(query));
+    if(filtered.length === 0){
+      list.innerHTML = '<li>no such item to show</li>'
+      return;
+    }
+
+    list.innerHTML = filtered.map(p=>{
+      if(!query) return `<li>${p}</li>`;
+      const start = p.toLowerCase().indexOf(query);
+      const end = start + query.length;
+      return `<li>${p.slice(0,start)}<mark>${p.slice(start,end)}</mark>${p.slice(end)}</li>`;
+    }).join('');
+  }
+
+  inp.addEventListener('input', e => renderList(e.target.value));
+  renderList();
+</script>
