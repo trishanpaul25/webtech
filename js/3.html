@@ -1,0 +1,25 @@
+<textarea id="editor" placeholder="Type here..."></textarea>
+<span id="status"></span>
+
+<script>
+function debounce(func, delay) {
+  let timer;
+  return function () {
+    clearTimeout(timer);
+    timer = setTimeout(func, delay);
+  };
+}
+
+function saveContent() {
+  const status = document.getElementById('status');
+  status.textContent = 'Saving...';
+
+  // simulated API call
+  setTimeout(() => {
+    status.textContent = 'Saved!';
+  }, 1000);
+}
+
+const debouncedSave = debounce(saveContent, 500);
+document.getElementById('editor').addEventListener('input', debouncedSave);
+</script>
