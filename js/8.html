@@ -1,0 +1,23 @@
+<script>
+async function retryAsync(fn,n=3,delay=1000){
+	for(let i = 1; i <= n; i++){
+	try{
+		return await fn();
+	} catch(err){
+		if(i===n) throw err;
+		console.warn(`attempt ${i} retrying in ${delay} ms`);
+		await new Promise(r => setTimeout(r,delay));	
+	}
+}
+}
+
+//mock
+let n=0;
+const mockAPI = () => new Promise((res,rej) =>{
+	n++;
+	if(n<3) rej(new Error('Network error'))
+	else res('done successfully');
+});
+
+retryAsync(mockAPI,3,1000).then(console.log).catch(console.error);
+</script>
