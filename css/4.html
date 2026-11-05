@@ -1,0 +1,25 @@
+<div class="table-container">
+<table>
+<thead>
+<tr><th>ID</th><th>Name</th><th>Role</th><th>Location</th><
+th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Alice</td><td>Developer</td><td>NY</td><td
+>Active</td></tr>
+<!-- More rows -->
+</tbody>
+</table>
+</div>
+<style>
+.table-container { max-width: 400px; max-height: 200px; overflow:
+auto; border: 1px solid #ddd; }
+table { border-collapse: collapse; width: 600px; } /* Force width to
+demonstrate scroll */
+th, td { padding: 10px; border: 1px solid #ddd; background: #fff;
+white-space: nowrap; }
+th { position: sticky; top: 0; background: #f4f4f4; z-index: 2; }
+td:first-child, th:first-child { position: sticky; left: 0; background:
+#fafafa; z-index: 1; }
+th:first-child { z-index: 3; } /* Corner cell needs highest z-index */
+</style>
