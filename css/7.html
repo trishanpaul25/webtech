@@ -1,0 +1,23 @@
+<div class="timeline">
+<div class="milestone left"><div class="content">2021: Project
+Start</div></div>
+<div class="milestone right"><div class="content">2022: MVP
+Launch</div></div>
+<div class="milestone left"><div class="content">2023: Series
+A</div></div>
+</div>
+<style>
+.timeline { position: relative; max-width: 600px; margin: 0 auto; }
+.timeline::after { content: ''; position: absolute; width: 4px;
+background: #333; top: 0; bottom: 0; left: 50%; margin-left: -2px; }
+.milestone { padding: 10px 40px; position: relative; width: 50%; boxsizing: border-box; }
+.left { left: 0; text-align: right; }
+.right { left: 50%; }
+.milestone::after {
+ content: ''; position: absolute; width: 16px; height: 16px;
+ background: white; border: 4px solid #333; border-radius: 50%;
+ top: 15px; right: -12px; z-index: 1;
+}
+.right::after { left: -12px; }
+.content { padding: 20px; background: #f4f4f4; border-radius: 6px; }
+</style>
