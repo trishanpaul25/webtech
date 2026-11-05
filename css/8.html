@@ -1,0 +1,21 @@
+<!-- HTML toggle switch goes here -->
+<button onclick="document.body.dataset.theme =
+document.body.dataset.theme === 'dark' ? 'light' : 'dark'">Toggle
+Theme</button>
+<style>
+:root {
+ --bg-color: #ffffff;
+ --text-color: #333333;
+ --primary-btn: #007bff;
+}
+[data-theme="dark"] {
+ --bg-color: #121212;
+ --text-color: #ffffff;
+ --primary-btn: #bb86fc;
+}
+body {
+ background-color: var(--bg-color);
+ color: var(--text-color);
+ transition: background-color 0.3s ease, color 0.3s ease;
+}
+</style>
