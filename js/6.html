@@ -1,0 +1,46 @@
+<div id="step1">
+  <input type="Email" id="email" placeholder="Email"/>
+  <button onclick="next()">Next</button>
+</div>
+<div id="step2" style="display:none">
+  <input id="pwd" type="password" placeholder="Password">
+  <input id="pwd2" type="password" placeholder="Confirm Password">
+  <button onclick="show(1)">Back</button>
+  <button onclick="submitForm()">Submit</button>
+</div>
+
+<p id="msg" style="color:red"></p>
+
+<script type="text/javascript" charset="utf-8">
+  const msg = document.getElementById('msg');
+  function show(n){
+    document.getElementById('step1').style.display = n === 1 ? 'block' : 'none';
+    document.getElementById('step2').style.display = n === 2 ? 'block' : 'none';
+    msg.innerHTML = ''; 
+  }
+  function next(){
+    const email = document.getElementById('email').value.trim();
+    if(!email){
+      msg.innerHTML = 'enter a email';
+      return;
+    }
+    if(!email.includes('@') || !email.includes('.')){
+      msg.innerHTML = "enter a valid email";
+      return;
+    }
+    show(2);
+  }
+  function submitForm(){
+    const p1 = document.getElementById('pwd').value;
+    const p2 = document.getElementById('pwd2').value;
+    if(p1.length < 6){
+      msg.innerHTML = 'too short';
+      return;
+    }
+    if(p1 != p2){
+      msg.innerHTML = 'not matching';
+      return;
+    }
+    alert('success');
+  }
+</script>

@@ -1,0 +1,32 @@
+<img src="https://uploads.onecompiler.io/4586k7kgr/1793775354430/WhatsApp%20Image%202025-10-06%20at%2022.02.18_7a903399.jpg" width="100" onclick="openBox(0)">
+<img src="https://uploads.onecompiler.io/4586k7kgr/1793775347001/WhatsApp%20Image%202026-07-13%20at%2010.34.46%20AM.jpeg" width="100" onclick="openBox(1)">
+
+<div id="box" style="display:none; position:fixed; top:0; left:0; height:100%; width:100%; background:rgba(0,0,0,0.8); text-align:center;">
+  <img id="big" style="max-width:80%; margin-top:5%;"><br>
+  <button onclick="move(-1)">prev</button>
+  <button onclick="move(1)">next</button>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  const box = document.getElementById('box');
+  const big = document.getElementById('big');
+  const images = ["https://uploads.onecompiler.io/4586k7kgr/1793775354430/WhatsApp%20Image%202025-10-06%20at%2022.02.18_7a903399.jpg","https://uploads.onecompiler.io/4586k7kgr/1793775347001/WhatsApp%20Image%202026-07-13%20at%2010.34.46%20AM.jpeg"];
+  let cur = 0;
+  function show() {
+    big.src = images[cur];
+  }
+  function openBox(i){
+    cur = i;
+    show();
+    box.style.display = 'block';
+  }
+  function closeBox(){
+    box.style.display = 'none';
+  }
+  function move(d){
+    cur = (cur+d+images.length)%images.length;
+    show();
+  }
+  document.addEventListener('keydown', e=>{if(e.key === 'Escape') closeBox();});
+  box.addEventListener('click', e=>{if(e.target === box) closeBox();});
+</script>
