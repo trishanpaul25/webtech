@@ -1,0 +1,32 @@
+<ul id="cart"></ul>
+<p>Subtotal : $<span id="subtotal">0.00</span></p>
+
+<script type="text/javascript" charset="utf-8">
+  const cart = [
+  {id:1,name:"Widget",price:9.99,qty:1},
+  {id:2,name:"Gadget",price:14.50,qty:2}
+  ];
+
+  const list = document.getElementById('cart');
+  function renderList(){
+    list.innerHTML = cart.map((item,index)=>`
+    <li>
+      ${item.name} - $${item.price.toFixed(2)}
+      <button onclick="changeQty(${index}, -1)">-</button>
+      ${item.qty}
+      <button onclick="changeQty(${index}, 1)">+</button>
+    </li>
+    `).join('');
+
+    const sub = cart.reduce((sum,item) => sum+(item.qty*item.price),0);
+    document.getElementById('subtotal').textContent=sub.toFixed(2);
+  }
+
+  function changeQty(index,d){
+    if(cart[index].id === 2) cart[index].qty+=2*d;
+    else cart[index].qty+=d;
+    if(cart[index].qty <= 0) cart.splice(index,1);
+    renderList();
+  }
+  renderList();
+</script>
