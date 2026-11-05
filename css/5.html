@@ -1,0 +1,22 @@
+<div class="tabs">
+<input type="radio" id="tab1" name="tab-group" checked>
+<label for="tab1">Tab 1</label>
+<input type="radio" id="tab2" name="tab-group">
+<label for="tab2">Tab 2</label>
+<div class="content" id="content1">Content for Tab 1</div>
+<div class="content" id="content2">Content for Tab 2</div>
+</div>
+<style>
+.tabs { display: flex; flex-wrap: wrap; }
+.tabs input[type="radio"] { display: none; }
+.tabs label { padding: 10px 20px; background: #eee; cursor: pointer;
+border: 1px solid #ccc; }
+.content { width: 100%; display: none; padding: 20px; border: 1px
+solid #ccc; margin-top: -1px; }
+/* The CSS Magic */
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2 { display: block; }
+#tab1:checked + label,
+#tab2:checked + label { background: #fff; border-bottom-color:
+transparent; }
+</style>
