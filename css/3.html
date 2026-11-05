@@ -1,0 +1,24 @@
+<div class="progress-ring" style="--progress: 75%;">
+<span>75%</span>
+</div>
+<style>
+.progress-ring {
+ width: 150px;
+ height: 150px;
+ border-radius: 50%;
+ display: flex; justify-content: center; align-items: center;
+ background: conic-gradient(#4caf50 var(--progress), #e0e0e0
+0deg);
+ position: relative;
+}
+.progress-ring::before {
+ content: "";
+ position: absolute;
+ width: 120px;
+ height: 120px;
+ background: white;
+ border-radius: 50%;
+}
+.progress-ring span { position: relative; font-weight: bold; font-size:
+1.5rem; }
+</style>
