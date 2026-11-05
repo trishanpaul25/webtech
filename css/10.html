@@ -1,0 +1,32 @@
+<div class="envelope"></div>
+<style>
+.envelope {
+ position: relative;
+ width: 200px;
+ height: 120px;
+ background: #f0c375;
+ border-radius: 4px;
+ margin: 50px auto;
+ box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.envelope::before {
+ content: '';
+ position: absolute;
+ top: 0; left: 0;
+ width: 0; height: 0;
+ border-left: 100px solid transparent;
+ border-right: 100px solid transparent;
+ border-top: 60px solid #e0b05b; /* Flap */
+ z-index: 2;
+}
+.envelope::after {
+ content: '';
+ position: absolute;
+ bottom: 0; left: 0;
+ width: 0; height: 0;
+ border-left: 100px solid #d3a14e;
+ border-right: 100px solid #d3a14e;
+ border-bottom: 60px solid #c79744;
+ z-index: 1;
+}
+</style>
