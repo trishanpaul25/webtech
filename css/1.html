@@ -1,0 +1,17 @@
+<div class="pricing-table">
+<div class="plan"><h3>Basic</h3><p>$10/mo</p></div>
+<div class="plan pro"><h3>Pro</h3><p>$20/mo</p></div>
+<div class="plan"><h3>Enterprise</h3><p>$30/mo</p></div>
+</div>
+<style>
+.pricing-table { display: flex; flex-wrap: wrap; gap: 20px; justifycontent: center; align-items: center; padding: 20px; }
+.plan { flex: 1; min-width: 250px; padding: 30px; border: 1px solid
+#ccc; border-radius: 8px; text-align: center; align-self: stretch;
+display: flex; flex-direction: column; justify-content: center; }
+.plan.pro { transform: scale(1.1); border: 2px solid #007bff; boxshadow: 0 10px 20px rgba(0,0,0,0.15); background-color: #f8faff; zindex: 1; }
+@media (max-width: 768px) {
+ .pricing-table { flex-direction: column; align-items: stretch; }
+ .plan.pro { transform: scale(1); } /* reset scale on mobile for better
+fit */
+}
+</style>
