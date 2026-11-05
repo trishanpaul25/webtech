@@ -1,0 +1,47 @@
+<div class="dropdown" tabindex="0" id="coustomDrop" aria-haspopup="listbox">
+  <div class="selected-value">Select a option...</div>
+  <ul class="options-list" role="listbox" style="display:none;">
+    <li role="option" tabindex="-1">option 1</li>
+    <li role="option" tabindex="-1">option 2</li>
+    <li role="option" tabindex="-1">option 3</li>
+  </ul>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  const drop = document.getElementById('coustomDrop');
+  const list = document.querySelector('.options-list');
+  const options = document.querySelectorAll('li');
+
+  let focusidx = -1;
+  drop.addEventListener('click', ()=>{
+    list.style.display = list.style.display === 'none' ? 'block' : 'none';
+  });
+
+  drop.addEventListener('keydown', e => {
+    if(list.style.display === 'none'){
+      if(e.key === 'Enter' || e.key === 'ArrowDown') list.style.display = 'block';
+      return;
+    }
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      focusidx=(focusidx+1)%options.length;
+    }
+    else if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      focusidx=(focusidx-1+options.length)%options.length;
+    }
+    else if(e.key === 'Enter' && focusidx >= 0){
+      drop.querySelector('.selected-value').textContent = options[focusidx].textContent
+      ;
+      list.style.display = 'none';
+    }
+    else if(e.key === 'Escape'){
+      list.style.display='none';
+      drop.focus();
+    }
+
+    options.forEach((opt,i)=>{
+      opt.style.background=i===focusidx ? '#eee' : 'transparent';
+    });
+  });
+</script>
